@@ -71,12 +71,13 @@
         "anomalyco/tap"
       ];
       homebrew.casks = [
-	      "wireshark"
-              "google-chrome"
+	      "wireshark-app"
+        "google-chrome"
       ];
       homebrew.brews = [
 	      "imagemagick"
         "opencode"
+        "gemini-cli"
       ];
     };
   in
