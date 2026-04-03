@@ -132,6 +132,11 @@ fv() { nvim "$(fd --type f --hidden --exclude .git | fzf)" }
  fi
  # End Nix
 
+ # Securely load local API keys (un-tracked by Git)
+ if [ -f "$HOME/.secrets.env" ]; then
+   source "$HOME/.secrets.env"
+ fi
+
 export XDG_CONFIG_HOME="/Users/amine/.config"
 
 eval "$(zoxide init zsh)"
