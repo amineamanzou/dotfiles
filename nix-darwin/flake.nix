@@ -44,6 +44,7 @@
           pkgs.ripgrep
           pkgs.go
           pkgs.htop
+          pkgs.ffmpeg
           inputs.codex-cli-nix.packages.${pkgs.system}.default
         ];
       nix.settings.experimental-features = "nix-command flakes";
