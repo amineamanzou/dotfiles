@@ -43,6 +43,11 @@
           pkgs.nodejs_22
           pkgs.ripgrep
           pkgs.go
+          pkgs.rustc
+          pkgs.cargo
+          pkgs.rustfmt
+          pkgs.clippy
+          pkgs.rust-analyzer
           pkgs.htop
           pkgs.ffmpeg
           inputs.codex-cli-nix.packages.${pkgs.system}.default
