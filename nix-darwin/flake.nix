@@ -41,6 +41,8 @@
           pkgs.zsh-autosuggestions
           pkgs.zsh-completions
           pkgs.nodejs_22
+          pkgs.python313
+          pkgs.uv
           pkgs.ripgrep
           pkgs.go
           pkgs.bun
