@@ -43,6 +43,7 @@
           pkgs.nodejs_22
           pkgs.ripgrep
           pkgs.go
+          pkgs.bun
           pkgs.rustc
           pkgs.cargo
           pkgs.rustfmt
