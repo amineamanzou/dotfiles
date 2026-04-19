@@ -28,6 +28,7 @@
     # ".config/aerospace".source = ~/dotfiles/aerospace;
     # ".config/sketchybar".source = ~/dotfiles/sketchybar;
     ".docker/config.json".text = builtins.toJSON {
+      currentContext = "colima";
       cliPluginsExtraDirs = [
         "/opt/homebrew/lib/docker/cli-plugins"
       ];
