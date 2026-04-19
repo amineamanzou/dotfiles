@@ -28,6 +28,7 @@
           pkgs.kubectl
           pkgs.kubectx
           pkgs.kubecm
+          pkgs.terraform
           pkgs.stow
           pkgs.tmux
           pkgs.neovim
