@@ -3,3 +3,16 @@ tmux/plugins/
 raycast
 fzf
 history.txt
+
+# Local agent tooling artifacts
+/.agent/
+/.gemini/
+/.opencode/
+
+# Local BMAD/design artifacts
+/_bmad/
+/_bmad-output/
+
+# Local package manager lockfiles for tooling sandboxes
+/opencode/package-lock.json
+/opencode/bun.lock
