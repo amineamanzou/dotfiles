@@ -27,6 +27,21 @@ cd dotfiles/nix-darwin
 nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .#the-unreliable-engineer
 ```
 
+**Keep Inputs Fresh Before Rebuilds**
+```bash
+# Update every pinned input in flake.lock, then apply the new system generation
+cd dotfiles/nix-darwin
+nix flake update
+nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .#the-unreliable-engineer
+```
+
+```bash
+# If you only want the Codex package to move forward
+cd dotfiles/nix-darwin
+nix flake update codex-cli-nix
+nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .#the-unreliable-engineer
+```
+
 **2. Deploy Dotfiles via GNU Stow:**
 ```bash
 # Navigate back to the root of your dotfiles repository

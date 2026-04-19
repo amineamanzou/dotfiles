@@ -126,6 +126,30 @@ fcd() { cd "$(fd --type d --hidden --exclude .git | fzf)" && l; }
 f() { echo "$(fd --type f --hidden --exclude .git | fzf)" | pbcopy }
 fv() { nvim "$(fd --type f --hidden --exclude .git | fzf)" }
 
+export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/Projects/dotfiles}"
+
+darwin-switch() {
+  command nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake "${DOTFILES_DIR}/nix-darwin#the-unreliable-engineer"
+}
+
+darwin-update() {
+  (
+    set -e
+    cd "${DOTFILES_DIR}/nix-darwin"
+    nix flake update
+    darwin-switch
+  )
+}
+
+codex-update() {
+  (
+    set -e
+    cd "${DOTFILES_DIR}/nix-darwin"
+    nix flake update codex-cli-nix
+    darwin-switch
+  )
+}
+
  # Nix
  if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 	 . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
