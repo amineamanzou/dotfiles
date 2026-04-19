@@ -15,7 +15,12 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, codex-cli-nix }:
   let
-    configuration = { pkgs, ... }: {
+    configuration = { pkgs, lib, ... }: {
+      nixpkgs.config.allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "terraform"
+        ];
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
@@ -55,7 +60,7 @@
           pkgs.rust-analyzer
           pkgs.htop
           pkgs.ffmpeg
-          inputs.codex-cli-nix.packages.${pkgs.system}.default
+          inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
       nix.settings.experimental-features = "nix-command flakes";
       programs.zsh.enable = true;  # default shell on catalina
