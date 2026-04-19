@@ -27,6 +27,11 @@
     # ".config/ghostty".source = ~/dotfiles/ghostty;
     # ".config/aerospace".source = ~/dotfiles/aerospace;
     # ".config/sketchybar".source = ~/dotfiles/sketchybar;
+    ".docker/config.json".text = builtins.toJSON {
+      cliPluginsExtraDirs = [
+        "/opt/homebrew/lib/docker/cli-plugins"
+      ];
+    };
   };
 
   home.sessionVariables = {

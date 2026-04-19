@@ -88,6 +88,9 @@
       ];
       homebrew.brews = [
 	      "imagemagick"
+        "colima"
+        "docker"
+        "docker-compose"
         "opencode"
         "gemini-cli"
       ];
