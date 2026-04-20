@@ -7,7 +7,9 @@ autoload -Uz compinit
 compinit
 source <(carapace _carapace zsh)
 source <(kubectl completion zsh)
-complete -C '/usr/local/bin/aws_completer' aws
+if command -v aws_completer >/dev/null 2>&1; then
+  complete -C "$(command -v aws_completer)" aws
+fi
 
 # zsh-autosuggestions is enabled natively via Nix Home-Manager
 bindkey '^w' autosuggest-execute

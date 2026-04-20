@@ -34,6 +34,7 @@
           pkgs.kubectx
           pkgs.kubecm
           pkgs.terraform
+          pkgs.awscli2
           pkgs.stow
           pkgs.tmux
           pkgs.neovim
