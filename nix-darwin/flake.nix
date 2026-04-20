@@ -96,6 +96,7 @@
       ];
       homebrew.brews = [
 	      "imagemagick"
+        "wireguard-tools"
         "colima"
         "docker"
         "docker-compose"
