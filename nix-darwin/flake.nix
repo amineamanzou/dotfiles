@@ -26,6 +26,8 @@
       environment.systemPackages =
         [ 
           pkgs.vim
+          pkgs.age
+          pkgs.sops
           pkgs.direnv
           pkgs.sshs
           pkgs.glow
