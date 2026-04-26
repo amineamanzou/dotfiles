@@ -23,23 +23,25 @@ Once the prerequisites are met, **do not manually `brew install`** any other too
 cd dotfiles/nix-darwin
 
 # Apply your Nix environment (this installs your shell, terminal, and all SRE dependencies)
+# Run activation as root, but use a path: flake reference so sudo does not touch .git
 # The extra-experimental-features flag is mandatory the very first time you bootstrap Nix
-nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .#the-unreliable-engineer
+sudo -H nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake "path:$PWD#the-unreliable-engineer"
 ```
 
 **Keep Inputs Fresh Before Rebuilds**
 ```bash
-# Update every pinned input in flake.lock, then apply the new system generation
+# Update every pinned input in flake.lock as your user, then apply the new system generation as root
+# Do not run flake updates with sudo, or root may end up owning files in .git
 cd dotfiles/nix-darwin
 nix flake update
-nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .#the-unreliable-engineer
+sudo -H nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake "path:$PWD#the-unreliable-engineer"
 ```
 
 ```bash
 # If you only want the Codex package to move forward
 cd dotfiles/nix-darwin
 nix flake update codex-cli-nix
-nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake .#the-unreliable-engineer
+sudo -H nix run --extra-experimental-features "nix-command flakes" nix-darwin -- switch --flake "path:$PWD#the-unreliable-engineer"
 ```
 
 **2. Deploy Dotfiles via GNU Stow:**
